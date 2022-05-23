@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { Content } from './Content';
+import './index.scss'
 
 export const Component = () => {
 

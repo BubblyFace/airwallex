@@ -1,0 +1,35 @@
+.content-container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    line-height: var(--content-font-size);
+    flex-flow: column;
+    height: 80vh;
+    .intro-container {
+        text-align: center;
+        padding: var(--content-padding);
+    }
+
+    .main-intro {
+        font-size: var(--content-large-title-font-size);
+        line-height: var(--content-large-title-font-size);
+    }
+
+    .sub-intro {
+        font-size: var(--content-font-size);
+    }   
+}
+
+.invite-dialog {
+    .reqeust-form {
+        width: 5rem;
+        text-align: center;
+    }
+}
+
+.request-success-content {
+    text-align: center;
+    .dialog-button {
+        margin-top: 0.12rem;
+    }
+}

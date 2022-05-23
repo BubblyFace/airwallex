@@ -1,0 +1,11 @@
+.footer-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--sub-bg-color);
+    text-align: center;
+    padding: var(--container-padding);
+    font-size: var(--content-font-size);
+    box-sizing: border-box;
+    color: var(--sub-color);
+}

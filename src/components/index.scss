@@ -1,0 +1,88 @@
+@import url('./reset.scss');
+
+:root {
+    /* collor */
+    --main-bg-color: #34495E;
+    --sub-bg-color: #E5E8E8;
+
+    /* font-color */
+    --main-color: #ffffff;
+    --sub-color: #000000;
+    --main-theme-color: #2C3E50;
+    --form-error: #fc2003;
+
+    /* padding */
+    --container-padding: 0.30rem;
+    --content-padding: 0.12rem;
+
+    /* font-size */
+    --content-font-size: 0.18rem;
+    --content-dialog-title-size: 0.24rem;
+    --content-title-font-size: 0.40rem;
+    --content-large-title-font-size: 0.80rem;
+}
+
+.main-page-container {
+    height: 100vh;
+    position:relative;
+}
+
+/* button */
+button {
+    padding: 0.12rem 0.18rem;
+    color: var(--main-theme-color);
+    cursor: pointer;
+    border-radius: 0.12rem;
+    border-color: var(--main-theme-color);
+    font-size: var(--content-font-size);  
+}
+
+button.main-button {
+    padding: 0.12rem 0.30rem;
+    color: var(--main-theme-color);
+    cursor: pointer;
+    border-radius: 0.12rem;
+    border-color: var(--main-theme-color);
+    font-size: var(--content-font-size);
+}
+
+button.dialog-button {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+
+/* dialog */
+.css-bdhsul-MuiTypography-root-MuiDialogTitle-root {
+    font-size: var(--content-font-size) !important;
+}
+
+.alert-dialog-title {
+    text-align: center;
+    font-size: var(--content-dialog-title-size);
+}
+
+div {
+    font-size: var(--content-font-size);
+}
+
+form {
+    .form-item {
+        padding:  var(--content-padding);
+        font-size: var(--content-font-size);
+        input {
+            width: 100%;
+            line-height: 0.3rem;
+            border-radius: 0.05rem;
+            box-sizing: border-box;
+            padding-left: var(--content-padding);
+        }
+        .form-error-info {
+            text-align: left;
+            color: var(--form-error);
+            padding-top: var(--content-padding);
+        }
+    }
+}

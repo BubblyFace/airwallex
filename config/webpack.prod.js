@@ -24,13 +24,4 @@ module.exports = require("./webpack.common")({
         })
     ],
     stats: "normal", //标准输出
-    module: {
-        rules: [{
-            test: /\.css$/,
-            loader: ExtractTextPlugin({
-                notExtractLoader: 'style-loader',
-                loader: 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base4:5]!resolve-url!postcss'
-            })
-        }],
-    }
 });
