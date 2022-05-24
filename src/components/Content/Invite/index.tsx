@@ -9,16 +9,18 @@ import { InviteDialogTitle, Inviting } from './inviting'
 import { InviteSuccessContent, InviteSuccessTitle } from './invitingSuccess'
 
 import { IInvitingRequestFormProps, InviteState } from './type'
+import { InviteContext } from './context'
+
 
 const InvitingRequestForm = (props: IInvitingRequestFormProps) => {
     const { open, onClose } = props
 
-    const [state, setState] = useState<InviteState>(InviteState.INVITING)
+    const [inviteState, setInviteState] = useState<InviteState>(InviteState.INVITING)
 
     const close = () => {
         onClose();
         let st = setTimeout(() => {
-            setState(InviteState.INVITING);
+            setInviteState(InviteState.INVITING);
             clearTimeout(st);
         }, 100);
     };
@@ -26,34 +28,39 @@ const InvitingRequestForm = (props: IInvitingRequestFormProps) => {
     const InviteStateMap = {
         [InviteState.INVITING]: {
             title: <InviteDialogTitle />,
-            comp: <Inviting setState={setState} />
+            comp: <Inviting />
         },
         [InviteState.SUCCESS]:
         {
             title: <InviteSuccessTitle />,
-            comp: <InviteSuccessContent close={close}/>
+            comp: <InviteSuccessContent />
         }
     }
-    const inviteStateComps = InviteStateMap[state]
+    const inviteStateComps = InviteStateMap[inviteState]
 
     if (!inviteStateComps) {
         return null
     }
 
-    return <Dialog
+    return <InviteContext.Provider
+        value={{
+            setInviteState: setInviteState,
+            close
+        }}
+    > <Dialog
         open={open}
         onClose={close}
         className="invite-dialog"
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
     >
-        <DialogTitle className="alert-dialog-title">
-            {inviteStateComps.title}
-        </DialogTitle>
-        <DialogContent>
-            {inviteStateComps.comp}
-        </DialogContent>
-    </Dialog>
+            <DialogTitle className="alert-dialog-title">
+                {inviteStateComps.title}
+            </DialogTitle>
+            <DialogContent>
+                {inviteStateComps.comp}
+            </DialogContent>
+        </Dialog></InviteContext.Provider>
 }
 
 

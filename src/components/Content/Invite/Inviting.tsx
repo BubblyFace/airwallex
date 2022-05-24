@@ -1,8 +1,10 @@
 import { useLocale } from "../../../hooks/useLocale"
 import { useForm } from "react-hook-form";
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useState, useContext } from "react"
 import { InviteState } from './type'
 import { Service } from '../../../service'
+import { InviteContext } from "./context";
+
 
 interface IInvitingRequest {
     fullName: string,
@@ -10,12 +12,10 @@ interface IInvitingRequest {
     confirmEmail: string,
 }
 
-export const Inviting = (props: {
-    setState: any
-}) => {
+export const Inviting = () => {
     const { register, formState: { errors, isSubmitting }, handleSubmit, watch } = useForm<IInvitingRequest>()
     const locale = useLocale()
-    const { setState } = props
+    const {setInviteState} = useContext(InviteContext)
     const email = watch('email')
     const [requestErrorInfo, setRequestErrorInfo] = useState('')
 
@@ -23,8 +23,7 @@ export const Inviting = (props: {
     const onSubmit = useCallback((data: any) => {
         setRequestErrorInfo('')
         return Service.request(data).then(res => {
-            console.log(data, res)
-            setState(InviteState.SUCCESS)
+            setInviteState(InviteState.SUCCESS)
         }).catch(error => {
             setRequestErrorInfo(error.message)
         })
